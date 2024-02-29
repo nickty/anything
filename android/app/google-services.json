@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "413491153687",
+    "project_id": "anything-99c44",
+    "storage_bucket": "anything-99c44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413491153687:android:cf0b87fae6808e97354552",
+        "android_client_info": {
+          "package_name": "com.flipcute.anything"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDhNgXWEsj4okrEqscQDVB0CXr_n6nGR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
