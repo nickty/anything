@@ -20,6 +20,6 @@ const checkConfig = server => {
   return config;
 };
 
-export const selectServer = 'production';
+export const selectServer = 'staging';
 
 export const config = checkConfig(selectServer);

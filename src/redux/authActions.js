@@ -3,6 +3,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {config} from '../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const loginUser = createAsyncThunk(
   'auth/login',
@@ -13,6 +14,11 @@ export const loginUser = createAsyncThunk(
         password,
       });
       console.log('API Response:', response.data);
+      const {accessToken, refreshToken} = response.data;
+
+      // Store tokens securely in AsyncStorage
+      await AsyncStorage.setItem('accessToken', accessToken);
+      await AsyncStorage.setItem('refreshToken', refreshToken);
       return response.data;
     } catch (error) {
       console.error(
