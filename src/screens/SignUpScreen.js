@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {loginUser, signupUser} from '../redux/authActions';
 // import auth from '@react-native-firebase/auth';
 
 const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleSignUp = async () => {
     try {
       // await auth().createUserWithEmailAndPassword(email, password);
-      console.log('User account created & signed in!');
+      // console.log('User account created & signed in!');
+      dispatch(signupUser({email, password}));
     } catch (error) {
       console.error(error);
     }

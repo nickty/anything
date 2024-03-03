@@ -5,12 +5,12 @@ const checkConfig = server => {
   switch (server) {
     case 'production':
       config = {
-        apiBaseUrl: 'https://anything-server.vercel.app/',
+        apiBaseUrl: 'https://anything-server.vercel.app',
       };
       break;
     case 'staging':
       config = {
-        apiBaseUrl: 'https://anything-server.vercel.app',
+        apiBaseUrl: 'http://10.0.2.2:3000',
       };
       break;
     default:
