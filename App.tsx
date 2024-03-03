@@ -11,7 +11,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        {/* <Tab.Screen name="SignUp" component={SignUpScreen} /> */}
+        <Tab.Screen name="SignUp" component={SignUpScreen} />
         <Tab.Screen name="SubmitText" component={SubmitTextScreen} />
         <Tab.Screen name="TextList" component={TextListScreen} />
       </Tab.Navigator>
