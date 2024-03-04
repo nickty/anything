@@ -19,7 +19,7 @@ export const loginUser = createAsyncThunk(
       // Store tokens securely in AsyncStorage
       await AsyncStorage.setItem('accessToken', accessToken);
       await AsyncStorage.setItem('refreshToken', refreshToken);
-      return response.data;
+      return {accessToken, refreshToken};
     } catch (error) {
       console.error(
         'API Error:',

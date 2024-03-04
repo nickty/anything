@@ -1,7 +1,7 @@
 // authSlice.js
 
 import {createSlice} from '@reduxjs/toolkit';
-import {signupUser} from './authActions';
+import {loginUser, signupUser} from './authActions';
 
 const initialState = {
   isAuthenticated: false,
@@ -21,6 +21,14 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(loginUser.fulfilled, (state, action) => {
+        const {accessToken, refreshToken} = action.payload;
+        state.isAuthenticated = true;
+        state.accessToken = accessToken;
+        state.refreshToken = refreshToken;
+        state.isLoading = false;
+        state.error = null;
+      })
       .addCase(signupUser.pending, state => {
         (state.isLoading = true), (state.error = null);
       })
