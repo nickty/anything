@@ -1,22 +1,32 @@
 import React, {useState} from 'react';
-import {View, TextInput, Button, StyleSheet} from 'react-native';
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {loginUser, signupUser} from '../redux/authActions';
-// import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native'; // Import useNavigation hook
+import {signupUser} from '../redux/authActions';
 
 const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigation = useNavigation(); // Initialize useNavigation hook
 
   const handleSignUp = async () => {
     try {
-      // await auth().createUserWithEmailAndPassword(email, password);
-      // console.log('User account created & signed in!');
       dispatch(signupUser({email, password}));
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const navigateToLogin = () => {
+    navigation.navigate('Login'); // Navigate to Login screen
   };
 
   return (
@@ -35,6 +45,11 @@ const SignUpScreen = () => {
         secureTextEntry
       />
       <Button title="Sign Up" onPress={handleSignUp} />
+      <TouchableOpacity onPress={navigateToLogin}>
+        <Text style={styles.loginLink}>
+          Already have an account? Log in here!
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -51,6 +66,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
+  },
+  loginLink: {
+    marginTop: 10,
+    textAlign: 'center',
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
 });
 
