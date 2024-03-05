@@ -1,12 +1,22 @@
 import React, {useState} from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
+import {addMessage} from '../redux/authActions';
+import {useDispatch, useSelector} from 'react-redux';
 
 const SubmitTextScreen = () => {
   const [text, setText] = useState('');
+  const dispatch = useDispatch();
+  const accessToken = useSelector(state => state.auth.accessToken);
 
   const handleSubmit = () => {
     // Submit the text to your backend or state management library
-    console.log(text);
+    // console.log(text);
+
+    try {
+      dispatch(addMessage({messageContent: text, accessToken}));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

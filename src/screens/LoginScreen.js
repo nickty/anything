@@ -20,6 +20,8 @@ const LoginScreen = () => {
   const handleLogin = async () => {
     try {
       dispatch(loginUser({email, password}));
+      // After successful login, navigate to the SubmitText screen
+      navigation.navigate('MainApp');
     } catch (error) {
       console.error(error);
     }

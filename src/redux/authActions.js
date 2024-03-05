@@ -55,3 +55,32 @@ export const signupUser = createAsyncThunk(
     }
   },
 );
+
+export const addMessage = createAsyncThunk(
+  'messages/create',
+  async ({messageContent, accessToken}, {rejectWithValue}) => {
+    try {
+      const response = await axios.post(
+        `${config.apiBaseUrl}/messages/create`, // Ensure this matches your actual API endpoint
+        {message: messageContent},
+        {
+          headers: {
+            // Adjust the header to use 'auth-token' as per backend expectation
+            'auth-token': accessToken,
+          },
+        },
+      );
+      console.log('Add message response:', response.data);
+      return response.data; // Assuming this is the desired response structure
+    } catch (error) {
+      console.error(
+        'Add message error:',
+        error.response ? error.response.data : error.message,
+      );
+      // Handle errors more granularly with rejectWithValue
+      return rejectWithValue(
+        error.response ? error.response.data : {error: error.message},
+      );
+    }
+  },
+);
